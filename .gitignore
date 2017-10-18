@@ -1,0 +1,10 @@
+build/
+dist/
+*.egg-info
+*.pyc
+.idea/
+.cache/
+doc/sphinx/_build/
+doc/sphinx/_static/
+doc/sphinx/_templates/
+.DS_Store
