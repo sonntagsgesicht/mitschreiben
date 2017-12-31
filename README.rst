@@ -72,7 +72,7 @@ one, by prepending the outer records current prefix stack to each key of the inn
 
         print rec.entries
 
-::
+
 
 The entries are a dict whose keys are tuples which are the stacked Prefixes. In this way it is possible to determine which method on which object was called, what then led
 to successive calls, where in the end a value is recorded. The example above has the following output.
@@ -81,7 +81,6 @@ to successive calls, where in the end a value is recorded. The example above has
 
     {('Foo(42403656).do_something', 'again_a_key'): 'baz', ('Foo(42403656).bar', 'Foo(42403656).do_something', 'again_a_key'): 'baz', ('Foo(42403656).do_something', 'so_creative'): 'barz', ('Foo(42403656).bar', 'a_key'): "That's", ('Foo(42403656).bar', 'another_key'): 'great', ('Foo(42403656).bar', 'Foo(42403656).do_something', 'so_creative'): 'barz'}
 
-::
 
 Formatting the output
 ---------------------
@@ -102,7 +101,7 @@ used to record a value). As the name of the former methods suggests, it produces
 .csv files into ``Path``, whereas the latter construct a html document in which one can navigate through the tree structure
 and see the tables at those positions where they would be placed in the tree. Those tables would look similar to
 
-.. raw:: html
+.. code:: html
 
     <div class='panel-elem'><table>
     <tr class='headrow'>
