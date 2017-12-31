@@ -19,7 +19,7 @@ except ImportError:
 setup(
     name='mitschreiben',
     description='Python library supplying a tool to record values during calculations',
-    version='0.2',
+    version='0.2.1',
     author='Deutsche Postbank AG [pbrisk]',
     author_email='pbrisk_at_github@icloud.com',
     url='https://github.com/pbrisk/mitschreiben',
