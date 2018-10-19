@@ -4,6 +4,7 @@ import os
 
 from mitschreiben import Record
 
+
 # dummy functions and classes to test Record and Prefix
 
 
@@ -42,7 +43,6 @@ def do_stuff():
 
 
 class PrefixTest(unittest.TestCase):
-
     def setUp(self):
         Record().clear()
 
@@ -52,7 +52,6 @@ class PrefixTest(unittest.TestCase):
         self.assertEqual(Record.Prefix.logged_methods(), decorated_functions)
 
     def test_Prefix_decorator(self):
-
         baz = 'baz'
         barz = 'barz'
         name = 'fara'
@@ -64,14 +63,14 @@ class PrefixTest(unittest.TestCase):
 
         assumed_record_entries = {('Foo({}).do_something'.format(name), 'again_a_key'): baz,
                                   ('Foo({}).do_something'.format(name), 'so_creative'): barz,
-                                  ('Foo({}).bar'.format(name),'Foo({}).do_something'.format(name), 'again_a_key'): baz,
-                                  ('Foo({}).bar'.format(name),'Foo({}).do_something'.format(name), 'so_creative'): barz,
+                                  ('Foo({}).bar'.format(name), 'Foo({}).do_something'.format(name), 'again_a_key'): baz,
+                                  (
+                                  'Foo({}).bar'.format(name), 'Foo({}).do_something'.format(name), 'so_creative'): barz,
                                   ('Foo({}).bar'.format(name), 'a_key'): "That's",
                                   ('Foo({}).bar'.format(name), 'another_key'): "great"}
         self.assertEqual(Record().entries, assumed_record_entries)
 
     def test_multilevel_record_append_prefix_context(self):
-
         with Record() as R1:
             with Record().append_prefix('level2'):
                 self.assertEqual(Record()._prefix_stack, ['level2'])
@@ -83,7 +82,7 @@ class PrefixTest(unittest.TestCase):
                 self.assertNotEqual(Record(), R2a)
                 self.assertEqual(Record(), R1)
                 with Record().append_prefix('another_prefix'):
-                    self.assertEqual(Record()._prefix_stack,['level2','another_prefix'])
+                    self.assertEqual(Record()._prefix_stack, ['level2', 'another_prefix'])
                     with Record() as R2b:
                         self.assertEqual(Record()._prefix_stack, [])
                         Record(recorded='just something')
@@ -115,7 +114,6 @@ class RecordTest(unittest.TestCase):
         Record(a_dict, key=value)
         self.assertEqual(Record().entries, dict())
 
-
     def test_call_to_RecordClass_start_stop(self):
         value = 'value'
 
@@ -124,12 +122,12 @@ class RecordTest(unittest.TestCase):
 
         Record().start()
         Record(key=value)
-        self.assertEqual(Record().entries, {('key',):'value'})
+        self.assertEqual(Record().entries, {('key',): 'value'})
         Record(a_dict)
-        self.assertEqual(Record().entries, {('key',):'value', ('a_key',):'a_value'})
+        self.assertEqual(Record().entries, {('key',): 'value', ('a_key',): 'a_value'})
         Record().stop()
         Record(b_dict, INT=12345)
-        self.assertEqual(Record().entries, {('key',):'value', ('a_key',):'a_value'})
+        self.assertEqual(Record().entries, {('key',): 'value', ('a_key',): 'a_value'})
 
     def test_Record_as_context(self):
         a_dict = {'a_key': 'a_value'}
@@ -151,12 +149,12 @@ class RecordTest(unittest.TestCase):
 
         R = Record()
         R._record(key=value)
-        self.assertEqual(Record().entries, {('key',):'value'})
+        self.assertEqual(Record().entries, {('key',): 'value'})
         R._record(a_dict)
-        self.assertEqual(Record().entries, {('key',):'value', ('a_key',):'a_value'})
+        self.assertEqual(Record().entries, {('key',): 'value', ('a_key',): 'a_value'})
         R._record(b_dict, INT=12345)
-        self.assertEqual(Record().entries, {('key',):'value', ('a_key',):'a_value', ('b_key',): 'b_value', ('INT',):12345} )
-
+        self.assertEqual(Record().entries,
+                         {('key',): 'value', ('a_key',): 'a_value', ('b_key',): 'b_value', ('INT',): 12345})
 
     def test_multilevel_record_context(self):
         R1 = Record()
@@ -171,9 +169,10 @@ class RecordTest(unittest.TestCase):
                 self.assertEqual(Record(), R2b)
             self.assertNotEqual(R2a, R2b)
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     import sys
+
     start_time = datetime.now()
 
     print('')
@@ -187,7 +186,7 @@ if __name__ == "__main__":
     print('')
 
     suite = unittest.TestLoader().loadTestsFromModule(__import__("__main__"))
-    testrunner = unittest.TextTestRunner(stream=sys.stdout , descriptions=2, verbosity=2)
+    testrunner = unittest.TextTestRunner(stream=sys.stdout, descriptions=2, verbosity=2)
     testrunner.run(suite)
 
     print('')
@@ -200,4 +199,3 @@ if __name__ == "__main__":
     print('')
     print('----------------------------------------------------------------------')
     print('')
-

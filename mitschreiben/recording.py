@@ -173,7 +173,7 @@ class Record(object):
             a.add(function.__name__)
             A[origin] = a
 
-    def __new__(cls):
+    def __new__(cls, *args, **kwargs):
 
         if cls._records and len(cls._records)-1 == cls._record_level:
             instance = cls._records[-1]
