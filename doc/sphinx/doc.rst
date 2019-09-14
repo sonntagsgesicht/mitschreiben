@@ -1,9 +1,13 @@
 
+.. py:currentmodule:: mitscheiben
+
+
 -----------------
 API Documentation
 -----------------
 
 .. toctree::
+    :glob:
 
 
 Class List
@@ -15,6 +19,7 @@ Class List
     mitschreiben.Record
     mitschreiben.table.Table
     mitschreiben.DicTree
+
 
 Inheritance Diagram
 ===================

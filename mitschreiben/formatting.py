@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+
+# mitschreiben
+# ------------
+# Python library supplying a tool to record values during calculations
+# 
+# Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
+# Version:  0.3, copyright Saturday, 14 September 2019
+# Website:  https://github.com/sonntagsgesicht/mitschreiben
+# License:  Apache License 2.0 (see LICENSE file)
+
+
 from table import Table
 import os
 import datetime
