@@ -3,7 +3,7 @@
 # mitschreiben
 # ------------
 # Python library supplying a tool to record values during calculations
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mitschreiben
@@ -65,6 +65,7 @@ class PrefixTest(unittest.TestCase):
     def test_decoration_memory(self):
         do_stuff()
         decorated_functions = {'{}.Foo'.format(__name__): {'do_something', 'bar'}}
+        decorated_functions = {"<class '{}.Foo'>".format(__name__): {'do_something', 'bar'}}
         self.assertEqual(Record.Prefix.logged_methods(), decorated_functions)
 
     def test_Prefix_decorator(self):
@@ -194,9 +195,9 @@ if __name__ == "__main__":
     print('')
     print('======================================================================')
     print('')
-    print('run %s' % __file__)
-    print('in %s' % os.getcwd())
-    print('started  at %s' % str(start_time))
+    print(('run %s' % __file__))
+    print(('in %s' % os.getcwd()))
+    print(('started  at %s' % str(start_time)))
     print('')
     print('----------------------------------------------------------------------')
     print('')
@@ -208,10 +209,10 @@ if __name__ == "__main__":
     print('')
     print('======================================================================')
     print('')
-    print('ran %s' % __file__)
-    print('in %s' % os.getcwd())
-    print('started  at %s' % str(start_time))
-    print('finished at %s' % str(datetime.now()))
+    print(('ran %s' % __file__))
+    print(('in %s' % os.getcwd()))
+    print(('started  at %s' % str(start_time)))
+    print(('finished at %s' % str(datetime.now())))
     print('')
     print('----------------------------------------------------------------------')
     print('')

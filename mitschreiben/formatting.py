@@ -10,7 +10,7 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from table import Table
+from .table import Table
 import os
 import datetime
 
@@ -25,10 +25,10 @@ class DictTree(dict):
     def __getitem__(self, tpl):
         if not isinstance(tpl, tuple):
             tpl = (tpl,)
-        if tpl in self.keys():
+        if tpl in list(self.keys()):
             return super(DictTree, self).__getitem__(tpl)
         else:
-            kvals = [(key[len(tpl):], value) for key, value in self.items() if len(key) >= len(tpl) and key[0:len(tpl)] == tpl]
+            kvals = [(key[len(tpl):], value) for key, value in list(self.items()) if len(key) >= len(tpl) and key[0:len(tpl)] == tpl]
             if kvals:
                 return DictTree(kvals)
             else:
@@ -38,8 +38,8 @@ class DictTree(dict):
         """Return tables from the two uppermost layers of the DictTree. One of them is a true table and the
         other is a collection of values"""
 
-        len1_keys = [key for key in self.keys() if len(key)==1]
-        len2_keys = [key for key in self.keys() if len(key)==2]
+        len1_keys = [key for key in list(self.keys()) if len(key)==1]
+        len2_keys = [key for key in list(self.keys()) if len(key)==2]
 
         pt = Table(name= name,)
         for k in len1_keys:
@@ -53,10 +53,10 @@ class DictTree(dict):
 
     def to_tables(self):
         """Makes a table from each level within the DictTree and returns those tables stored in a new DictTree"""
-        max_level = max(map(len, self.keys()))
+        max_level = max(list(map(len, list(self.keys()))))
         tables = DictTree()
         for i in range(0, max_level):
-            for key in sorted(list(set([k[0:i] for k in self.keys()]))):
+            for key in sorted(list(set([k[0:i] for k in list(self.keys())]))):
                 T = self[key]
                 if isinstance(T, DictTree):
                     key_str = "---".join(map(str, key))
@@ -90,8 +90,8 @@ class DictTree(dict):
                 indent, rest_key = compare_keys(previous_key, key)
 
             for i, value in enumerate(rest_key):
-                print ("|"+" "*indentfactor)*(indent+i)+value \
-                      + ((":" +" " * indentfactor + str(self[key]))if i == len(rest_key) - 1 else "")
+                print(("|"+" "*indentfactor)*(indent+i)+value \
+                      + ((":" +" " * indentfactor + str(self[key]))if i == len(rest_key) - 1 else ""))
             previous_key = key
 
     @staticmethod
@@ -170,7 +170,7 @@ class DictTree(dict):
 
             f.write(s1)
 
-            for tb in sorted(tbs.values(), key=lambda x: x.name):
+            for tb in sorted(list(tbs.values()), key=lambda x: x.name):
                 f.write("<table>\n")
                 if tb.name == "":
                     tb.name = "TOP"
@@ -195,7 +195,7 @@ class DictTree(dict):
             j = equal_list.index(False)
             return j, tpl_next[j:]
 
-        keys = sorted(tree.keys(), key=lambda x: x[:-1])
+        keys = sorted(list(tree.keys()), key=lambda x: x[:-1])
         previous_key = None
 
         with open("htmldicttree.temp", "w") as tempfile:
@@ -246,7 +246,7 @@ class DictTree(dict):
         if path and not os.path.isdir(path):
             os.makedirs(path)
 
-        for tb in self.to_tables().values():
+        for tb in list(self.to_tables().values()):
             filename = make_filename(tb.name)
             if path:
                 target_file_path = os.path.join(path, filename)

@@ -31,6 +31,6 @@ __scripts__ = ()
 
 __all__ = ['Record', 'DictTree']
 
-from recording import Record
-from formatting import DictTree
-from table import Table
+from .recording import Record
+from .formatting import DictTree
+from .table import Table

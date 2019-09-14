@@ -53,7 +53,7 @@ class Table(object):
             self.col_keys.append(col_key)
 
     def append_row(self, row_key, row):
-        for col_key, value in row.items():
+        for col_key, value in list(row.items()):
             self.append(row_key, col_key, value)
 
     def get(self, row_key, col_key):
@@ -102,7 +102,7 @@ class Table(object):
         repr.append(""+separator+separator.join(col_keys))
         for key in self.row_keys:
             elements = [key]+self.get_row_list(key, col_keys)
-            elements = map(str, elements)
+            elements = list(map(str, elements))
             repr.append(separator.join(elements))
         return "\n".join(repr)
 
@@ -116,11 +116,11 @@ class Table(object):
             return '\n'.join(representation + ['Empty Table'])
         tab = self
         line = leftUpper if leftUpper is not None else (self.left_upper if self.left_upper is not None else '')
-        max_row_key_width = max(map(len, map(str,tab.row_keys) + [line]))
+        max_row_key_width = max(list(map(len, list(map(str,tab.row_keys)) + [line])))
         line = "{text:>{len}}".format(text=line, len=max_row_key_width)
         max_colkey_width = dict()
         for col_key in tab.col_keys:
-            max_colkey_width[col_key] = max(map(lambda x:len(str(x)), tab.get_column(col_key).values() + [col_key]))
+            max_colkey_width[col_key] = max([len(str(x)) for x in list(tab.get_column(col_key).values()) + [col_key]])
         for col_key in tab.col_keys:
             line += "{sep}{col:>{width}}".format(sep=separator, col=col_key, width=max_colkey_width[col_key])
         representation.append(line)
@@ -171,9 +171,9 @@ class Table(object):
         table_rows = json_dict['Table']
         header = table_rows[0][1:]
         first_col = [row[0] for row in table_rows][1:]
-        for r in xrange(len(first_col)):
+        for r in range(len(first_col)):
             row = table_rows[r + 1]
-            for c in xrange(len(header)):
+            for c in range(len(header)):
                 ret.append(first_col[r], header[c], row[c + 1])
         return ret
 

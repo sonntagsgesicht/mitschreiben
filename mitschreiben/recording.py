@@ -3,7 +3,7 @@
 # mitschreiben
 # ------------
 # Python library supplying a tool to record values during calculations
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mitschreiben
@@ -12,7 +12,7 @@
 
 from inspect import getargspec
 from functools import wraps
-from formatting import DictTree
+from .formatting import DictTree
 
 
 __all__ = ['Record']
@@ -28,7 +28,7 @@ class RecordMeta(type):
         return record
 
 
-class Record(object):
+class Record(object, metaclass=RecordMeta):
     """
     This class can be used to record values during calculations. The class can be called to do the actual recording.
     Moreover the class grants access to the record depending on the record level and finally it is a contextmanager to
@@ -83,8 +83,6 @@ class Record(object):
     [OUT]   {"bar.foo|key":value}
 
     """
-
-    __metaclass__ = RecordMeta
     _records = list()
     _record_level = 0
 
@@ -150,7 +148,7 @@ class Record(object):
 
             origin = function.__module__
 
-            BUILTINTYPES = [t for t in __builtins__.values() if isinstance(t, type)]
+            BUILTINTYPES = [t for t in list(__builtins__.values()) if isinstance(t, type)]
 
             @wraps(function)
             def helper(*args, **kwargs):
@@ -162,7 +160,6 @@ class Record(object):
                     else:
                         origin = str(args[0].__class__)
 
-
                 Record.Prefix._log_method(origin, function)
                 if args:
                     caller = repr(args[0])
@@ -173,6 +170,7 @@ class Record(object):
                 with Record().append_prefix(pref):
                     value = function(*args, **kwargs)
                 return value
+
             setattr(helper, 'getargsinspect', getargspec(function))
 
             return helper
@@ -253,9 +251,9 @@ class Record(object):
         to be recorded and keys that are used to build the keys of the record together with the prefix stack.
         kwargs are used just as a dict which was passed as argument."""
         for arg in [arg for arg in args if isinstance(arg, dict)]:
-            for key, value in arg.items():
+            for key, value in list(arg.items()):
                 self._add_entry(key, value)
-        for key, value in kwargs.items():
+        for key, value in list(kwargs.items()):
             self._add_entry(key, value)
 
     def __enter__(self):
@@ -276,7 +274,7 @@ class Record(object):
     def _extend(self, other):
         """A (sub)record can be united with its (parent)record by extending the subrecordkeys with the present state
         of the parentrecordkeys"""
-        for key, value in other.entries.items():
+        for key, value in list(other.entries.items()):
             self._add_entry(key, value)
 
     def __str__(self):
