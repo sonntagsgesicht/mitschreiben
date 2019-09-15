@@ -3,7 +3,7 @@
 # mitschreiben
 # ------------
 # Python library supplying a tool to record values during calculations
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mitschreiben
@@ -41,6 +41,8 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',

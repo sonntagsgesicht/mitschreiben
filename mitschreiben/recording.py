@@ -12,8 +12,9 @@
 
 from inspect import getargspec
 from functools import wraps
-from .formatting import DictTree
+from six import with_metaclass
 
+from .formatting import DictTree
 
 __all__ = ['Record']
 
@@ -28,7 +29,7 @@ class RecordMeta(type):
         return record
 
 
-class Record(object, metaclass=RecordMeta):
+class Record(with_metaclass(RecordMeta, object)):  # 2to3 migration 20190915
     """
     This class can be used to record values during calculations. The class can be called to do the actual recording.
     Moreover the class grants access to the record depending on the record level and finally it is a contextmanager to
@@ -153,12 +154,13 @@ class Record(object, metaclass=RecordMeta):
             @wraps(function)
             def helper(*args, **kwargs):
                 if args:
-                    if args[0] in BUILTINTYPES or type(args[0]) in BUILTINTYPES:
+                    first = args[0]
+                    if first in BUILTINTYPES or type(first) in BUILTINTYPES:
                         pass
-                    elif isinstance(args[0], type):
-                        origin = str(args[0])
                     else:
-                        origin = str(args[0].__class__)
+                        first_class = first if isinstance(first, type) else first.__class__
+                        # origin = str(first_class)  # 2to3 migration 20190915
+                        origin = first_class.__module__ + '.' + first_class.__name__
 
                 Record.Prefix._log_method(origin, function)
                 if args:

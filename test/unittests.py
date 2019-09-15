@@ -65,7 +65,6 @@ class PrefixTest(unittest.TestCase):
     def test_decoration_memory(self):
         do_stuff()
         decorated_functions = {'{}.Foo'.format(__name__): {'do_something', 'bar'}}
-        decorated_functions = {"<class '{}.Foo'>".format(__name__): {'do_something', 'bar'}}
         self.assertEqual(Record.Prefix.logged_methods(), decorated_functions)
 
     def test_Prefix_decorator(self):
