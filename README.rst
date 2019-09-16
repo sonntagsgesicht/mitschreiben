@@ -73,7 +73,6 @@ one, by prepending the outer records current prefix stack to each key of the inn
         print rec.entries
 
 
-
 The entries are a dict whose keys are tuples which are the stacked Prefixes. In this way it is possible to determine which method on which object was called, what then led
 to successive calls, where in the end a value is recorded. The example above has the following output.
 
