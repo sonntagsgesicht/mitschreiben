@@ -1,12 +1,55 @@
 mitschreiben
 ============
 
-.. image:: https://img.shields.io/codeship/f797f980-5b19-0135-2a70-66335668a83b/master.svg
-    :target: https://codeship.com//projects/237404
+.. image:: https://img.shields.io/codeship/78df14e0-ba83-0137-e4e4-5ec1c160b8c0//master.svg
+    :target: https://codeship.com//projects/364816
 
-.. image:: https://readthedocs.org/projects/mitschreiben/badge
-    :target: http://mitschreiben.readthedocs.io
+.. image:: https://travis-ci.org/sonntagsgesicht/mitschreiben.svg?branch=master
+    :target: https://travis-ci.org/sonntagsgesicht/mitschreiben
 
+.. image:: https://img.shields.io/readthedocs/mitschreiben
+   :target: http://mitschreiben.readthedocs.io
+   :alt: Read the Docs
+
+.. image:: https://img.shields.io/codefactor/grade/github/sonntagsgesicht/mitschreiben/master
+   :target: https://www.codefactor.io/repository/github/sonntagsgesicht/mitschreiben
+   :alt: CodeFactor Grade
+
+.. image:: https://img.shields.io/codeclimate/maintainability/sonntagsgesicht/mitschreiben
+   :target: https://codeclimate.com/github/sonntagsgesicht/mitschreiben/maintainability
+   :alt: Code Climate maintainability
+
+.. image:: https://img.shields.io/codeclimate/coverage/sonntagsgesicht/mitschreiben
+   :target: https://codeclimate.com/github/sonntagsgesicht/mitschreiben/test_coverage
+   :alt: Code Climate Coverage
+
+.. image:: https://img.shields.io/lgtm/grade/python/g/sonntagsgesicht/mitschreiben.svg
+   :target: https://lgtm.com/projects/g/sonntagsgesicht/mitschreiben/context:python/
+   :alt: lgtm grade
+
+.. image:: https://img.shields.io/lgtm/alerts/g/sonntagsgesicht/mitschreiben.svg
+   :target: https://lgtm.com/projects/g/sonntagsgesicht/mitschreiben/alerts/
+   :alt: total lgtm alerts
+
+.. image:: https://img.shields.io/github/license/sonntagsgesicht/mitschreiben
+   :target: https://github.com/sonntagsgesicht/mitschreiben/raw/master/LICENSE
+   :alt: GitHub
+
+.. image:: https://img.shields.io/github/release/sonntagsgesicht/mitschreiben?label=github
+   :target: https://github.com/sonntagsgesicht/mitschreiben/releases
+   :alt: GitHub release
+
+.. image:: https://img.shields.io/pypi/v/mitschreiben
+   :target: https://pypi.org/project/mitschreiben/
+   :alt: PyPI Version
+
+.. image:: https://img.shields.io/pypi/pyversions/mitschreiben
+   :target: https://pypi.org/project/mitschreiben/
+   :alt: PyPI - Python Version
+
+.. image:: https://img.shields.io/pypi/dm/mitschreiben
+   :target: https://pypi.org/project/mitschreiben/
+   :alt: PyPI Downloads
 
 
 mitschreiben (german for 'to take notes') helps recording values during
