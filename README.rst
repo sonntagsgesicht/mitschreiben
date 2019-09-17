@@ -1,11 +1,14 @@
-mitschreiben
-============
 
-.. image:: https://img.shields.io/codeship/78df14e0-ba83-0137-e4e4-5ec1c160b8c0//master.svg
-    :target: https://codeship.com//projects/364816
+Python project *mitschreiben*
+-----------------------------
+
+.. image:: https://img.shields.io/codeship/78df14e0-ba83-0137-e4e4-5ec1c160b8c0/master.svg
+   :target: https://codeship.com/projects/364816
+   :alt: CodeShip
 
 .. image:: https://travis-ci.org/sonntagsgesicht/mitschreiben.svg?branch=master
-    :target: https://travis-ci.org/sonntagsgesicht/mitschreiben
+   :target: https://travis-ci.org/sonntagsgesicht/mitschreiben
+   :alt: Travis ci
 
 .. image:: https://img.shields.io/readthedocs/mitschreiben
    :target: http://mitschreiben.readthedocs.io
@@ -19,9 +22,9 @@ mitschreiben
    :target: https://codeclimate.com/github/sonntagsgesicht/mitschreiben/maintainability
    :alt: Code Climate maintainability
 
-.. image:: https://img.shields.io/codeclimate/coverage/sonntagsgesicht/mitschreiben
-   :target: https://codeclimate.com/github/sonntagsgesicht/mitschreiben/test_coverage
-   :alt: Code Climate Coverage
+.. image:: https://img.shields.io/codecov/c/github/sonntagsgesicht/mitschreiben
+   :target: https://codecov.io/gh/sonntagsgesicht/mitschreiben
+   :alt: Codecov
 
 .. image:: https://img.shields.io/lgtm/grade/python/g/sonntagsgesicht/mitschreiben.svg
    :target: https://lgtm.com/projects/g/sonntagsgesicht/mitschreiben/context:python/
