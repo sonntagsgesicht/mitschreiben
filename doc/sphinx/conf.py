@@ -3,7 +3,7 @@
 # mitschreiben
 # ------------
 # Python library supplying a tool to record values during calculations
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Wednesday, 18 September 2019
 # Website:  https://github.com/sonntagsgesicht/mitschreiben
@@ -130,7 +130,7 @@ if os.path.exists(rst_epilog_file):
 _replacements = replacements_from_pkg(replacements, pkg)
 rst_prolog += os.linesep + replacements_str(_replacements)
 
-# print(rst_prolog)
+print(rst_prolog)
 # print(rst_epilog)
 
 

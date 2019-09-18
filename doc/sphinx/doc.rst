@@ -1,5 +1,5 @@
 
-.. py:currentmodule:: mitscheiben
+.. module:: mitscheiben
 
 
 -----------------
@@ -13,21 +13,18 @@ API Documentation
 Class List
 ==========
 
+.. py:currentmodule:: mitschreiben
+
 .. autosummary::
     :nosignatures:
 
-    mitschreiben.Record
+    mitschreiben.recording.Record
     mitschreiben.table.Table
-    mitschreiben.DicTree
-
-
-Inheritance Diagram
-===================
-
-.. inheritance-diagram:: mitschreiben
-
+    mitschreiben.formatting.DictTree
 
 Classes
 =======
 
-.. automodule:: mitschreiben
+.. automodule:: mitschreiben.recording
+.. automodule:: mitschreiben.table
+.. automodule:: mitschreiben.formatting
