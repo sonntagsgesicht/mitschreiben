@@ -130,7 +130,7 @@ if os.path.exists(rst_epilog_file):
 _replacements = replacements_from_pkg(replacements, pkg)
 rst_prolog += os.linesep + replacements_str(_replacements)
 
-print(rst_prolog)
+# print(rst_prolog)
 # print(rst_epilog)
 
 
